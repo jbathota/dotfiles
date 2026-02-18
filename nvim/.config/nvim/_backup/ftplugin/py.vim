@@ -1,0 +1,11 @@
+setlocal tabstop=8
+setlocal shiftwidth=4
+setlocal softtabstop=4
+setlocal noexpandtab
+setlocal textwidth=80
+setlocal cc=+1
+setlocal fo+=tc
+setlocal fo-=l
+setlocal autoindent
+setlocal smartindent
+setlocal fileformat=unix

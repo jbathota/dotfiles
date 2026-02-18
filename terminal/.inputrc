@@ -1,0 +1,5 @@
+"\e[A": history-search-backward
+"\eOA": history-previous-history
+"\e[B": history-search-forward
+"\eOB": history-next-history
+
