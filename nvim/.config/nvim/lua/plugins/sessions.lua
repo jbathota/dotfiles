@@ -29,6 +29,12 @@ return {
         }
     end,
     init = function()
+        -- create sessions directory if not exists
+        local session_path = PATH_NVIM_DATA .. "/sessions"
+        if not vim.loop.fs_stat(session_path) then
+            vim.loop.fs_mkdir(session_path, 493)
+        end
+
         local possession = require("nvim-possession")
         vim.keymap.set("n", "<leader>sl", function() possession.list() end, { desc = "List the sessions" })
         vim.keymap.set("n", "<leader>ss", function() possession.new() end, { desc = "Save as new session" })

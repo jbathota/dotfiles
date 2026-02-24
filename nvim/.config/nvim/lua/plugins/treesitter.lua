@@ -14,7 +14,7 @@ return {
     { -- Highlight, edit, and navigate code
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
-        main = 'nvim-treesitter.configs', -- Sets main module to use for opts
+        main = 'nvim-treesitter.config', -- Sets main module to use for opts
         -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
         opts = {
             ensure_installed = { 'bash', 'c', 'cpp', 'diff', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'vim', 'vimdoc', 'python', 'rust' },
@@ -41,9 +41,9 @@ return {
     -- selecting the text objects in code
     { "nvim-treesitter/nvim-treesitter-textobjects", cond = true, dependencies = { "nvim-treesitter/nvim-treesitter" } },
     -- Text objects with less key bindings
-    { "RRethy/nvim-treesitter-textsubjects", cond = true, dependencies = { "nvim-treesitter/nvim-treesitter" } },
+    { "RRethy/nvim-treesitter-textsubjects", cond = false, dependencies = { "nvim-treesitter/nvim-treesitter" } },
     -- code documentation generator
-    { "nvim-treesitter/nvim-tree-docs", cond = true, dependencies = { "nvim-treesitter/nvim-treesitter" } },
+    { "nvim-treesitter/nvim-tree-docs", cond = false, dependencies = { "nvim-treesitter/nvim-treesitter" } },
 
     -- show the context at top fo the window
     {

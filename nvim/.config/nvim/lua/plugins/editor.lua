@@ -31,7 +31,7 @@ return {
                 space = '.' },
             },
             config = true,
-            vim.keymap.set('n', '<Leader>tc', '<Cmd>ListcharsToggle<CR>', { noremap = true, silent = true, desc = "Toggle showing listchars" }),
+            vim.keymap.set('n', '<Leader>tc', '<Cmd>ListcharsToggle<CR>', { noremap = true, silent = true, desc = "[Editor] Toggle showing listchars" }),
     },
 
     -- [[ Marks ]]
@@ -50,32 +50,32 @@ return {
             {
                 "<leader>xx",
                 "<cmd>Trouble diagnostics toggle<cr>",
-                desc = "Diagnostics (Trouble)",
+                desc = "[Trouble] Diagnostics",
             },
             {
                 "<leader>xX",
                 "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-                desc = "Buffer Diagnostics (Trouble)",
+                desc = "[Trouble] Buffer Diagnostics",
             },
             {
                 "<leader>xs",
                 "<cmd>Trouble symbols toggle focus=false<cr>",
-                desc = "Symbols (Trouble)",
+                desc = "[Trouble] Symbols",
             },
             {
                 "<leader>xl",
                 "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-                desc = "LSP Definitions / references / ... (Trouble)",
+                desc = "[Trouble] LSP Definitions / references / ...",
             },
             {
                 "<leader>xL",
                 "<cmd>Trouble loclist toggle<cr>",
-                desc = "Location List (Trouble)",
+                desc = "[Trouble] Location List",
             },
             {
                 "<leader>xQ",
                 "<cmd>Trouble qflist toggle<cr>",
-                desc = "Quickfix List (Trouble)",
+                desc = "[Trouble] Quickfix List",
             },
         },
     },
@@ -87,26 +87,18 @@ return {
         ---@type Flash.Config
         opts = {
             modes = {
-                search = { enabled = false },
+                search = { enabled = true },
+                char = { jump_labels = true },
             },
         },
         -- stylua: ignore
         keys = {
-            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-            { "S", mode = { "n", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-            { "r", mode = {"o"}, function() require("flash").remote() end, desc = "Remote Flash" },
-            { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-            { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "[Flash] Jump" },
+            { "S", mode = { "n", "o" }, function() require("flash").treesitter() end, desc = "[Flash] Treesitter" },
+            { "r", mode = {"o"}, function() require("flash").remote() end, desc = "[Flash] Remote Flash" },
+            { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "[Flash] Treesitter Search" },
+            { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "[Flash] Toggle Flash Search" },
         },
-    },
-
-    -- [[ Show the mappings that are free to be mapped ]]
-    {
-        "meznaric/key-analyzer.nvim",
-        opts = {
-            layout = "qwerty",
-            promotion = false,
-        }
     },
 
     -- [[ Harpoon for navigating through files ]]
@@ -128,11 +120,22 @@ return {
 
             -- keymaps for harpoon. 'p' -> stands for project.
             -- 'pv'= project view
-            vim.keymap.set("n", "<leader>pa", function() harpoon:list():add() end, { desc = "Harpoon Add to list"})
-            vim.keymap.set("n", "<leader>pv", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Harpoon view list" })
+            vim.keymap.set("n", "<leader>pa", function() harpoon:list():add() end, { desc = "[Harpoon] Add to list"})
+            vim.keymap.set("n", "<leader>pv", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "[Harpoon] view list" })
             -- Toggle previous & next buffers stored within Harpoon list
-            vim.keymap.set("n", "<leader>pp", function() harpoon:list():prev() end, { desc = "Harpoon previous file" })
-            vim.keymap.set("n", "<leader>pn", function() harpoon:list():next() end, { desc = "Harpoon next file" })
+            vim.keymap.set("n", "<leader>pp", function() harpoon:list():prev() end, { desc = "[Harpoon] previous file" })
+            vim.keymap.set("n", "<leader>pn", function() harpoon:list():next() end, { desc = "[Harpoon] next file" })
         end,
+    },
+
+    -- [[ undotree ]]
+    {
+        "jiaoshijie/undotree",
+        opts = {
+            -- your options
+        },
+        keys = { -- load the plugin only when using it's keybinding:
+            { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>", desc = "[Undrotree] Toggle undotree" },
+        },
     },
 }
