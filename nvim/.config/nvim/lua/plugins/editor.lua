@@ -31,7 +31,7 @@ return {
                 space = '.' },
             },
             config = true,
-            vim.keymap.set('n', '<Leader>tc', '<Cmd>ListcharsToggle<CR>', { noremap = true, silent = true, desc = "Toggle showing listchars" }),
+            vim.keymap.set('n', '<Leader>tc', '<Cmd>ListcharsToggle<CR>', { noremap = true, silent = true, desc = "[Editor] Toggle showing listchars" }),
     },
 
     -- [[ Marks ]]
@@ -87,7 +87,8 @@ return {
         ---@type Flash.Config
         opts = {
             modes = {
-                search = { enabled = false },
+                search = { enabled = true }, -- integrate with search "/ or ?". We can use labels
+                char = { jump_labels = true }, -- show jump labels and prefer them over the current position
             },
         },
         -- stylua: ignore
@@ -98,15 +99,6 @@ return {
             { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
             { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
         },
-    },
-
-    -- [[ Show the mappings that are free to be mapped ]]
-    {
-        "meznaric/key-analyzer.nvim",
-        opts = {
-            layout = "qwerty",
-            promotion = false,
-        }
     },
 
     -- [[ Harpoon for navigating through files ]]
@@ -135,4 +127,15 @@ return {
             vim.keymap.set("n", "<leader>pn", function() harpoon:list():next() end, { desc = "Harpoon next file" })
         end,
     },
+
+    -- [[ undotree  ]]
+    {
+        "jiaoshijie/undotree",
+        opts = {
+            -- your options
+        },
+        keys = { -- load the plugin only when using it's keybinding:
+            { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>", desc = "[UndoTree] Toggle undo tree" },
+        },
+    }
 }

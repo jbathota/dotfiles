@@ -1,36 +1,10 @@
 return {
+
     {
-        "zbirenbaum/copilot.lua",
-        dependencies = {
-            "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
-            init = function()
-                vim.g.copilot_nes_debounce = 500
-            end,
-        },
-
-        cmd = "Copilot",
-        event = "InsertEnter", -- To initialize on InsertEnter
-
-        opts = {
-            suggestion = { enabled = false },
-            panel = { enabled = false },
-            filetypes = {
-                markdown = true,
-                help = true,
-            },
-        },
-
+        "github/copilot.vim",
         config = function()
-            require("copilot").setup({
-                nes = {
-                    enabled = true,
-                    keymap = {
-                        accept_and_goto = "<leader>a",
-                        accept = false,
-                        dismiss = "<Esc>",
-                    },
-                },
-            })
+            vim.g.copilot_no_tab_map = true
+            vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', { expr = true, replace_keycodes = false, desc = "[copilot] Accept suggestion"})
         end,
     },
 

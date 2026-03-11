@@ -1,8 +1,8 @@
 return {
     -- [[ status line ]]
-    {
+    --[[ {
         'AndreM222/copilot-lualine',
-    },
+    }, ]]
 
     {
         'nvim-lualine/lualine.nvim',
@@ -63,7 +63,7 @@ return {
                             getLspClient,
                             icon = ' ',
                         },
-                        {
+                        --[[ {
                             'copilot',
                             -- Default values
                             symbols = {
@@ -88,7 +88,7 @@ return {
                             },
                             show_colors = false,
                             show_loading = true
-                        },
+                        }, ]]
                     },
                     lualine_z = {'progress','location'},
                 },
